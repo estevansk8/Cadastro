@@ -2,6 +2,7 @@ package com.estevan.cadastro
 
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -63,9 +64,11 @@ class MainActivity : AppCompatActivity() {
         forms.phone = binding.phoneEditText.text.toString()
         forms.city = binding.cityEditText.text.toString()
         forms.state = binding.stateSpinner.selectedItem.toString()
-        forms.sexo = binding.sexoRg.checkedRadioButtonId.toString()
+        forms.sexo = if (binding.masculinoRb.isChecked) "Masculino" else "Feminino"
         forms.check = if (binding.check.isChecked) "In list emails!!" else "Not in list of emails"
 
+        Toast.makeText(this, forms.toString(), Toast.LENGTH_SHORT).show()
+        println(forms.toString())
 
         AlertDialog.Builder(this)
             .setTitle("Form submitted")
@@ -73,6 +76,8 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("Okay") { _, _ ->
                 // do nothing
             }
+            .show()
+
     }
 
 
@@ -126,9 +131,9 @@ class MainActivity : AppCompatActivity() {
         {
             return "Must be all Digits"
         }
-        if(phoneText.length != 10)
+        if(phoneText.length != 11)
         {
-            return "Must be 10 Digits"
+            return "Must be 11 Digits"
         }
         return null
     }
