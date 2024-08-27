@@ -70,14 +70,6 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, forms.toString(), Toast.LENGTH_SHORT).show()
         println(forms.toString())
 
-        AlertDialog.Builder(this)
-            .setTitle("Form submitted")
-            .setMessage(forms.toString())
-            .setPositiveButton("Okay") { _, _ ->
-                // do nothing
-            }
-            .show()
-
     }
 
 
